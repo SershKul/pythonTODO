@@ -1,0 +1,140 @@
+Models:
+	Todo{
+		title*	string
+		The task title
+		content*	string
+		The task content
+}
+
+	Todo list{
+		title*	string
+		The task title
+		created_at*	string
+		Created time
+}
+
+	Todo detail{
+		title*	string
+		The task title
+		content*	string
+		The task content
+		created_at*	string
+		Created time
+}
+
+task
+TODO operation my_api
+
+
+GET/task/ List of all tasks
+Parameters
+Name				Description
+
+X-Fields			An optional fields mask
+string($mask)
+(header)
+	
+Responses			Response content type: application/json
+
+Code				Description
+200				Success
+Example Value:
+Model
+[
+  {
+    "title": "string",
+    "created_at": "string"
+  }
+]
+
+
+POST/task/ Create a new task
+Parameters
+Name				Description
+
+payload *			Example Value
+				Model
+				{
+ 				 "title": "string",
+ 				 "content": "string"
+				}
+				Parameter content type: application/json
+
+Responses			Response content type: application/json
+
+Code				Description
+200				Success
+
+PUT/task/{id} Update a task given its identifier
+Parameters
+Name				Description
+payload *			Example Value
+				Model
+				{
+				  "title": "string",
+				  "content": "string"
+				}
+				Parameter content type: application/json
+
+X-Fields			An optional fields mask
+string($mask)
+(header)
+	
+id *				The task identifier
+integer
+(path)	
+
+Responses			Response content type: application/json
+Code				Description
+200				Success
+
+				Example Value
+				Model
+				{
+				  "title": "string",
+ 				  "content": "string",
+				  "created_at": "string"
+				}
+
+404				Todo not found
+
+
+DELETE/task/{id} Delete a task given its identifier
+Parameters
+Name				Description
+
+id *				The task identifier
+integer
+(path)	
+
+Responses			Response content type: application/json
+
+Code				Description
+204				Todo deleted
+404				Todo not found
+
+
+GET/task/{id} Show a task given its identifier
+Parameters
+Name				Description
+
+X-Fields			An optional fields mask
+string($mask)
+(header)	
+
+id *				The task identifier
+integer
+(path)	
+
+Responses			Response content type: application/json
+
+Code				Description
+201				Success
+				Example Value
+				Model
+				{
+ 				 "title": "string",
+ 				 "content": "string",
+ 				 "created_at": "string"
+				}
+404				Todo not found
